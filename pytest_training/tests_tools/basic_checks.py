@@ -21,20 +21,20 @@ def check_email(data):
         f"email='{email}' не похож на корректный email"
 
 # вспомогательные проверки типов
-def check_string(value, field_name, user_id):
+def check_string(value, field_name="", context=""):
+    prefix = f"[{context}] " if context else ""
     assert isinstance(value, str), (
-        f"У юзера {user_id} поле '{field_name}' должно быть str, "
-        f"а пришло {type(value).__name__}"
+        f"{prefix}Поле '{field_name}' должно быть str, а пришло {type(value).__name__}"
     )
 
-def check_int(value, field_name, user_id):
+def check_int(value, field_name="", context=""):
+    prefix = f"[{context}] " if context else ""
     assert isinstance(value, int), (
-        f"У юзера {user_id} поле '{field_name}' должно быть int, "
-        f"а пришло {type(value).__name__}"
+        f"{prefix}Поле '{field_name}' должно быть int, а пришло {type(value).__name__}"
     )
 
-def check_float_or_string_latlng(value, field_name, user_id):
+def check_float_or_string_latlng(value, field_name="", context=""):
+    prefix = f"[{context}] " if context else ""
     assert isinstance(value, (str, float, int)), (
-        f"У юзера {user_id} поле '{field_name}' должно быть str/float/int, "
-        f"а пришло {type(value).__name__}"
+        f"{prefix}Поле '{field_name}' должно быть str/float/int, а пришло {type(value).__name__}"
     )
